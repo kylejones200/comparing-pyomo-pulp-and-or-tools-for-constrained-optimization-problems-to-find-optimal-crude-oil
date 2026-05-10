@@ -1,3 +1,10 @@
+---
+author: "Kyle Jones"
+date_published: "July 14, 2025"
+date_exported_from_medium: "November 10, 2025"
+canonical_link: "https://medium.com/@kyle-t-jones/comparing-pyomo-pulp-and-or-tools-for-constrained-optimization-problems-to-find-optimal-crude-oil-385ad1931694"
+---
+
 # Comparing Pyomo, PuLP, and OR-Tools for Constrained Optimization problems to find optimal crude oil... Assume we have three crude types:
 
 ### Comparing **Pyomo**, **PuLP**, and **OR-Tools** for Constrained Optimization problems to find optimal crude oil blends
@@ -10,10 +17,7 @@ Our task is to blend **6000 barrels** such that:
 - Sulfur ≤ 1.0%
 - No crude exceeds available volume
 
-IN this scenario, our Objective is to minimize total cost. This could be
-changed to maximise expected profit (delta between cost and market
-price). Ot some other objective function like mazimilzing stability over
-time
+IN this scenario, our Objective is to minimize total cost. This could be changed to maximise expected profit (delta between cost and market price). Ot some other objective function like mazimilzing stability over time
 
 ### ✅ Pyomo
 ```python
@@ -38,8 +42,7 @@ solver = pyo.SolverFactory('glpk')
 solver.solve(model)
 ```
 
-**Pros:** Rich modeling language, good for extensions (nonlinear, MIP)\
-**Cons:** Slightly verbose, requires external solver (GLPK, CBC)
+**Pros:** Rich modeling language, good for extensions (nonlinear, MIP)\ **Cons:** Slightly verbose, requires external solver (GLPK, CBC)
 
 ### ✅ PuLP
 ```python
@@ -56,8 +59,7 @@ for i in crudes:
 model.solve()
 ```
 
-**Pros:** Clean syntax, easy to learn, built-in CBC solver\
-**Cons:** Less powerful for nonlinear or large models
+**Pros:** Clean syntax, easy to learn, built-in CBC solver\ **Cons:** Less powerful for nonlinear or large models
 
 ### ✅ OR-Tools
 ```python
@@ -72,22 +74,16 @@ solver.Minimize(solver.Sum([vol[i] * cost[i] for i in crudes]))
 status = solver.Solve()
 ```
 
-**Pros:** Very fast, production-ready for Google-scale systems\
-**Cons:** Less flexible syntax, weaker support for nonlinear or symbolic
-models
+**Pros:** Very fast, production-ready for Google-scale systems\ **Cons:** Less flexible syntax, weaker support for nonlinear or symbolic models
 
 #### 🧠 Recommendation
 
 
 - Use **PuLP** for small, readable LP problems.
-- Use **Pyomo** when modeling more complex, multistage, or nonlinear
-  systems.
-- Use **OR-Tools** when you need speed, performance, or route
-  planning.
+- Use **Pyomo** when modeling more complex, multistage, or nonlinear systems.
+- Use **OR-Tools** when you need speed, performance, or route planning.
 
-This is a side-by-side test. The problem is simple, but it is
-interesting how much variance there was in runtime for this simple
-problem.
+This is a side-by-side test. The problem is simple, but it is interesting how much variance there was in runtime for this simple problem.
 
 ```python
 import pyomo.environ as pyo
@@ -165,12 +161,3 @@ results['OR-Tools'] = {
 
 df = pd.DataFrame(results).T
 ```
-
-
-::::::::By [Kyle Jones](https://medium.com/@kyle-t-jones) on
-[July 14, 2025](https://medium.com/p/385ad1931694).
-
-[Canonical
-link](https://medium.com/@kyle-t-jones/comparing-pyomo-pulp-and-or-tools-for-constrained-optimization-problems-to-find-optimal-crude-oil-385ad1931694)
-
-Exported from [Medium](https://medium.com) on November 10, 2025.
