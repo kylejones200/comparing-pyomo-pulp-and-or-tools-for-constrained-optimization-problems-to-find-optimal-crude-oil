@@ -1,7 +1,7 @@
 # Comparing Pyomo PuLP and OR Tools for Constrained Optimization problems to find optimal crude oil
 
-**Published:** 2025-07-14
-**Medium:** [https://medium.com/@kyle-t-jones/comparing-pyomo-pulp-and-or-tools-for-constrained-optimization-problems-to-find-optimal-crude-oil-385ad1931694](https://medium.com/@kyle-t-jones/comparing-pyomo-pulp-and-or-tools-for-constrained-optimization-problems-to-find-optimal-crude-oil-385ad1931694)
+Published: 2025-07-14
+Medium: [https://medium.com/@kyle-t-jones/comparing-pyomo-pulp-and-or-tools-for-constrained-optimization-problems-to-find-optimal-crude-oil-385ad1931694](https://medium.com/@kyle-t-jones/comparing-pyomo-pulp-and-or-tools-for-constrained-optimization-problems-to-find-optimal-crude-oil-385ad1931694)
 
 ## About
 

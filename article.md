@@ -7,11 +7,11 @@ canonical_link: "https://medium.com/@kyle-t-jones/comparing-pyomo-pulp-and-or-to
 
 # Comparing Pyomo, PuLP, and OR-Tools for Constrained Optimization problems to find optimal crude oil... Assume we have three crude types:
 
-### Comparing **Pyomo**, **PuLP**, and **OR-Tools** for Constrained Optimization problems to find optimal crude oil blends
+### Comparing Pyomo, PuLP, and OR-Tools for Constrained Optimization problems to find optimal crude oil blends
 Assume we have three crude types:
 
 
-Our task is to blend **6000 barrels** such that:
+Our task is to blend 6000 barrels such that:
 
 - API ≥ 35
 - Sulfur ≤ 1.0%
@@ -42,7 +42,7 @@ solver = pyo.SolverFactory('glpk')
 solver.solve(model)
 ```
 
-**Pros:** Rich modeling language, good for extensions (nonlinear, MIP)\ **Cons:** Slightly verbose, requires external solver (GLPK, CBC)
+Pros: Rich modeling language, good for extensions (nonlinear, MIP)\ Cons: Slightly verbose, requires external solver (GLPK, CBC)
 
 ### ✅ PuLP
 ```python
@@ -59,7 +59,7 @@ for i in crudes:
 model.solve()
 ```
 
-**Pros:** Clean syntax, easy to learn, built-in CBC solver\ **Cons:** Less powerful for nonlinear or large models
+Pros: Clean syntax, easy to learn, built-in CBC solver\ Cons: Less powerful for nonlinear or large models
 
 ### ✅ OR-Tools
 ```python
@@ -74,14 +74,14 @@ solver.Minimize(solver.Sum([vol[i] * cost[i] for i in crudes]))
 status = solver.Solve()
 ```
 
-**Pros:** Very fast, production-ready for Google-scale systems\ **Cons:** Less flexible syntax, weaker support for nonlinear or symbolic models
+Pros: Very fast, production-ready for Google-scale systems\ Cons: Less flexible syntax, weaker support for nonlinear or symbolic models
 
 #### 🧠 Recommendation
 
 
-- Use **PuLP** for small, readable LP problems.
-- Use **Pyomo** when modeling more complex, multistage, or nonlinear systems.
-- Use **OR-Tools** when you need speed, performance, or route planning.
+- Use PuLP for small, readable LP problems.
+- Use Pyomo when modeling more complex, multistage, or nonlinear systems.
+- Use OR-Tools when you need speed, performance, or route planning.
 
 This is a side-by-side test. The problem is simple, but it is interesting how much variance there was in runtime for this simple problem.
 
