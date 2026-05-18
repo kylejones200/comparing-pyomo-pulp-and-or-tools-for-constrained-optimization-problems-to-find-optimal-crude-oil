@@ -382,9 +382,7 @@ def solve_pyomo(data):
 
 def main() -> None:
     scale = 1
-
     data = make_problem(scale=scale)
-
     tests = [
         ("PyOFrame + HiGHS", lambda: solve_pyoframe(data)),
         ("Python-MIP + CBC", lambda: solve_mip(data)),
@@ -393,9 +391,7 @@ def main() -> None:
         ("Pyomo CBC/HiGHS/GLPK", lambda: solve_pyomo(data)),
         ("CVXPY + ECOS/OSQP", lambda: solve_cvxpy(data)),
     ]
-
     rows, solutions = ([], {})
-
     for name, fn in tests:
         try:
             row, orders = bench(name, fn)
@@ -416,7 +412,6 @@ def main() -> None:
         solutions[name] = orders
 
     df = pd.DataFrame(rows)
-
     df = df[
         [
             "Library",
@@ -427,21 +422,13 @@ def main() -> None:
             "Note",
         ]
     ]
-
     df.sort_values(["Status", "Runtime (s)"], inplace=True, na_position="last")
-
     print("\n=== Benchmark Summary ===")
-
     print(df.to_string(index=False))
-
     out_csv = "benchmark_results.csv"
-
     df.to_csv(out_csv, index=False)
-
     print(f"\nWrote {out_csv}")
-
     ok = df[df["Status"] == "ok"]
-
     if not ok.empty:
         plt.figure(figsize=(8, 4))
         plt.bar(ok["Library"], ok["Runtime (s)"])
@@ -467,7 +454,6 @@ def main() -> None:
         print("Saved benchmark_memory.png")
 
     first_ok = next((name for name, _ in tests if name in ok["Library"].tolist()), None)
-
     if first_ok:
         print(f"\nSample solution from {first_ok}:")
         print(solutions[first_ok].to_string(index=False))
